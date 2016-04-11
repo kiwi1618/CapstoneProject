@@ -233,6 +233,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@android:color/white"
                 android:clickable="true"
+                android:onClick="onClick"
                 android:text="건너뛰기"
                 android:textColor="@color/mint" />
 
@@ -245,6 +246,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@android:color/white"
                 android:clickable="true"
+                android:onClick="onClick"
                 android:text="저장"
                 android:textColor="@color/mint" />
         </RelativeLayout>
