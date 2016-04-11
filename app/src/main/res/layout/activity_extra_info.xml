@@ -1,0 +1,252 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/mint"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/title_register_extra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="추가 정보 입력"
+                android:textColor="@android:color/white"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/major_extra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/title_register_extra"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@+id/major_extra_input"
+                android:text="전공"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/major_extra_input"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/title_register_extra"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:hint="전공"
+                android:inputType="text"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/comp_type_extra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/major_extra"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@+id/comp_type_extra_input"
+                android:text="회사종류"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/comp_type_extra_input"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/major_extra"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:hint="회사종류"
+                android:inputType="text"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/wishduty_extra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/comp_type_extra"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@+id/wishduty_extra_input"
+                android:text="희망직무"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/wishduty_extra_input"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/comp_type_extra"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:hint="희망직무"
+                android:inputType="text"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/wishcomp_extra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/wishduty_extra"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@+id/wishcomp_extra_input"
+                android:text="희망회사"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/wishcomp_extra_input"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/wishduty_extra"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:hint="희망회사"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/sex_extra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/wishcomp_extra"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@+id/sex_extra_input"
+                android:text="성별"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/sex_extra_input"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/wishcomp_extra"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:hint="성별"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/age_extra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/sex_extra"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@+id/age_extra_input"
+                android:text="나이"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/age_extra_input"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/sex_extra"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:hint="나이"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/uni_extra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/age_extra"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@+id/uni_extra_input"
+                android:text="대학"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/uni_extra_input"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/age_extra"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:hint="대학"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="@color/light_gray" />
+
+
+            <Button
+                android:id="@+id/button_skip"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/uni_extra"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:text="건너뛰기"
+                android:textColor="@color/mint" />
+
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/uni_extra"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:text="저장"
+                android:textColor="@color/mint" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
