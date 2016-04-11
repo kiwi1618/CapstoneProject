@@ -53,7 +53,9 @@ public class LureResult2Activity extends Activity implements View.OnClickListene
     }
 
     @Override
-    public void onBackPressed() {backPressCloseHandler.onBackPressed();
+    public void onBackPressed() {
+        this.finish();
+        overridePendingTransition(R.anim.animation_enter_left2right, R.anim.animation_leave_left2right);
     }
 
 }
