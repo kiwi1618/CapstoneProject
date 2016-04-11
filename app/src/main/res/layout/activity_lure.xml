@@ -44,7 +44,8 @@
                 android:background="@android:color/white"
                 android:padding="10dp"
                 android:singleLine="true"
-                android:maxLength="3"/>
+                android:maxLength="3"
+                android:inputType="number"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
