@@ -80,12 +80,15 @@ public class LureActivity extends Activity implements View.OnClickListener {
                 if (neverShow.isChecked()) {
                     DataHolder.getInstance().setSkipLure(true);
                 }
-                showAlertDialogue();
+                Intent goLogin = new Intent(LureActivity.this, LoginActivity.class);
+                goLogin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(goLogin);
+                //showAlertDialogue();
                 break;
         }
     }
 
-    private void showAlertDialogue(){
+    /*private void showAlertDialogue(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("앱 종료");
         alertDialogBuilder
@@ -103,7 +106,7 @@ public class LureActivity extends Activity implements View.OnClickListener {
                 });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
