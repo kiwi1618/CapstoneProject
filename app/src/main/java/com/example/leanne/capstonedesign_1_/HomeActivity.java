@@ -5,8 +5,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 
 /**
  * Created by imsuyeon on 16. 4. 2..
@@ -16,14 +14,14 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
+        tabLayout.addTab(tabLayout.newTab().setText("내 페이지"));
+        tabLayout.addTab(tabLayout.newTab().setText("맞춤형 랭킹"));
+        tabLayout.addTab(tabLayout.newTab().setText("♥찜목록"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
