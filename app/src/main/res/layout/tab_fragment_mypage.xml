@@ -16,11 +16,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_centerInParent="true"
             android:text="내 정보"
             android:textSize="30dp"
-            android:textColor="@color/mint"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:textColor="@color/mint"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -29,7 +27,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:text="이름: "
                 android:layout_marginBottom="5dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
@@ -37,13 +34,10 @@
                 android:id="@+id/mypage_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:text=""
                 android:layout_marginBottom="5dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
         </LinearLayout>
-
-
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -51,7 +45,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:text="아이디: "
                 android:layout_marginBottom="5dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
@@ -59,7 +52,6 @@
                 android:id="@+id/mypage_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:text=""
                 android:layout_marginBottom="5dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
@@ -71,7 +63,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:text="전공: "
                 android:layout_marginBottom="5dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
@@ -79,7 +70,6 @@
                 android:id="@+id/mypage_major"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:text=""
                 android:layout_marginBottom="5dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
@@ -91,7 +81,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:text="희망 회사 종류: "
                 android:layout_marginBottom="5dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
@@ -99,7 +88,6 @@
                 android:id="@+id/mypage_wish_company_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:text=""
                 android:layout_marginBottom="5dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
@@ -111,7 +99,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:text="희망 회사: "
                 android:layout_marginBottom="5dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
@@ -119,7 +106,6 @@
                 android:id="@+id/mypage_wish_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:text=""
                 android:layout_marginBottom="5dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
@@ -136,6 +122,7 @@
         android:layout_marginBottom="30dp"
         android:layout_marginTop="10dp">
         <Button
+            android:id="@+id/button_edit_myinfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/mint"
@@ -144,6 +131,7 @@
             android:textSize="20dp"
             android:text="내정보 수정"/>
         <Button
+            android:id="@+id/button_edit_rankings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
@@ -153,6 +141,7 @@
             android:padding="10dp"
             android:text="랭킹 기준 수정"/>
         <Button
+            android:id="@+id/button_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"

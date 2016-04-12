@@ -26,6 +26,9 @@
         <activity android:name=".LureActivity" />
         <activity android:name=".LureResultActivity" />
         <activity android:name=".LureResult2Activity" />
+        <activity android:name=".EditMyInfoActivity" />
+        <activity android:name=".EditRankingsActivity" />
+        <activity android:name=".SettingsActivity" />
     </application>
 
 </manifest>
