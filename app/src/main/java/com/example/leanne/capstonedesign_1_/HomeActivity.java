@@ -47,6 +47,10 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    private void getMyInfo() {
+
+    }
+
     /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);

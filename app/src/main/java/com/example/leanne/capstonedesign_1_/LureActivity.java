@@ -54,7 +54,7 @@ public class LureActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.result_button:
-                String stringScore = lureScore.getText().toString();
+                String stringScore = lureScore.getText ().toString();
                 if(stringScore.equals(""))
                     Toast.makeText(this, "점수를 입력해주시오.", Toast.LENGTH_SHORT).show();
                 else
@@ -83,6 +83,7 @@ public class LureActivity extends Activity implements View.OnClickListener {
                 Intent goLogin = new Intent(LureActivity.this, LoginActivity.class);
                 goLogin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(goLogin);
+                overridePendingTransition(R.anim.animation_enter_right2left, R.anim.animation_leave_right2left);
                 //showAlertDialogue();
                 break;
         }

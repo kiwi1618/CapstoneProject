@@ -38,12 +38,23 @@ public class TabFragment_MyPage extends Fragment implements View.OnClickListener
             case R.id.button_edit_myinfo:
                 Intent goEditMyInfo = new Intent(getActivity(), EditMyInfoActivity.class);
                 startActivity(goEditMyInfo);
+                getActivity().overridePendingTransition(
+                        R.anim.animation_enter_right2left,
+                        R.anim.animation_leave_right2left);
                 break;
             case R.id.button_edit_rankings:
-
+                Intent goEditRankings = new Intent(getActivity(), EditRankingsActivity.class);
+                startActivity(goEditRankings);
+                getActivity().overridePendingTransition(
+                        R.anim.animation_enter_right2left,
+                        R.anim.animation_leave_right2left);
                 break;
             case R.id.button_settings:
-
+                Intent goSettings = new Intent(getActivity(), SettingsActivity.class);
+                startActivity(goSettings);
+                getActivity().overridePendingTransition(
+                        R.anim.animation_enter_right2left,
+                        R.anim.animation_leave_right2left);
                 break;
         }
     }

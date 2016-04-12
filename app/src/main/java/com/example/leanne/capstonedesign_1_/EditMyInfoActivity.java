@@ -36,9 +36,14 @@ public class EditMyInfoActivity extends Activity implements View.OnClickListener
                 Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show();
                 // if DB save failure
                 // Toast.makeText(this, "저장 실패", Toast.LENGTH_SHORT.show());
-                Intent goBackHome = new Intent(this, HomeActivity.class);
-                startActivity(goBackHome);
+                onBackPressed();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.finish();
+        overridePendingTransition(R.anim.animation_enter_left2right, R.anim.animation_leave_left2right);
     }
 }
