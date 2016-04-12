@@ -45,10 +45,7 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    private void getMyInfo() {
-
+        viewPager.setCurrentItem(1);    // show second tab as default
     }
 
     /*@Override
