@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="추가 정보 입력"
+            android:text="개인 정보 수정"
             android:textColor="@android:color/white"
             android:textSize="25dp" />
     </LinearLayout>
