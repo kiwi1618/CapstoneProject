@@ -7,12 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by Chloe on 4/5/2016.
  */
 public class LureResultActivity extends Activity implements View.OnClickListener {
 
     private Button buttonNext;
+    private TextView scoreToeic;
+    private String score;   // get score from server
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +28,14 @@ public class LureResultActivity extends Activity implements View.OnClickListener
     private void initView() {
         buttonNext = (Button)findViewById(R.id.go_next_button);
         buttonNext.setOnClickListener(this);
+        scoreToeic = (TextView)findViewById(R.id.result_text_toeic);
+        getToeicScore();    // show score
+    }
+
+    private void getToeicScore() {
+        score = "null"; // default
+        // get score from server as String
+        scoreToeic.setText(score);
     }
 
     @Override
