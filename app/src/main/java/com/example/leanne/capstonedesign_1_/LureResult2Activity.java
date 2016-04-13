@@ -27,15 +27,15 @@ public class LureResult2Activity extends Activity implements View.OnClickListene
 
     private void initView() {
         backPressCloseHandler = new BackPressCloseHandler(this);
-        buttonRegister = (Button)findViewById(R.id.go_register_button);
+        buttonRegister = (Button) findViewById(R.id.go_register_button);
         buttonRegister.setOnClickListener(this);
-        textViewAlreadyMember = (TextView)findViewById(R.id.already_member);
+        textViewAlreadyMember = (TextView) findViewById(R.id.already_member);
         textViewAlreadyMember.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
+        switch (v.getId()) {
             case R.id.go_register_button:
                 Intent goRegister = new Intent(LureResult2Activity.this, RegisterActivity.class);
                 startActivity(goRegister);
