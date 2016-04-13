@@ -185,6 +185,7 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
                 String stringScore = editTextToeic.getText().toString();
                 if (stringScore.equals("")) {
                     Toast.makeText(this, "토익점수를 입력해주세요.", Toast.LENGTH_LONG).show();
+                    break;
                 } else {
                     int toeicScore = Integer.parseInt(stringScore);
                     if (toeicScore < 0 && toeicScore > 990) {
