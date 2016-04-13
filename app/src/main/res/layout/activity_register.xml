@@ -40,7 +40,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:background="@android:color/white"
-            android:onClick="onClick"
             android:padding="10dp"
             android:text="중복확인"
             android:textColor="@color/mint" />

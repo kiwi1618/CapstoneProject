@@ -194,7 +194,6 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
                     }
                 }
                 boolean gender = false;
-                // String birthday = textViewBirthday.getText().toString();
 
                 if (isFemaleClicked)
                     gender = true;
