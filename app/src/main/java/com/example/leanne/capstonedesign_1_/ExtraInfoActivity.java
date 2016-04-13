@@ -5,11 +5,15 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,20 +23,23 @@ import java.util.Calendar;
  * Created by imsuyeon on 16. 4. 4..
  */
 public class ExtraInfoActivity extends Activity implements View.OnClickListener {
-    EditText editTextCompany, editTextToeic;
+    private EditText editTextCompany, editTextToeic;
     static boolean isFemaleClicked;
     static boolean isMaleClicked;
-    Button buttonMale;
-    Button buttonFemale;
+    private Button buttonMale;
+    private Button buttonFemale;
 
     private int year;
     private int month;
     private int day;
 
-    TextView textViewBirthday;
-    Button buttonBirthday;
+    private TextView textViewBirthday;
+    private Button buttonBirthday;
 
     static final int DATE_DIALOG_ID = 0;
+
+    private TextView textViewUniSearch;
+    private PopupWindow popupWindow;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +63,9 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
         year = c.get(Calendar.YEAR);
         month = c.get(Calendar.MONTH);
         day = c.get(Calendar.DAY_OF_MONTH);
+
+        textViewUniSearch = (TextView) findViewById(R.id.uni_extra_input);
+        textViewUniSearch.setOnClickListener(this);
 
         updateDisplay();
     }
@@ -85,7 +95,24 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
+        switch (v.getId()) {
+            case R.id.uni_extra_input:
+                View viewPopup = getLayoutInflater().inflate(R.layout.activity_popup_university, null);
+                popupWindow = new PopupWindow(viewPopup, RelativeLayout.LayoutParams.MATCH_PARENT,
+                        RelativeLayout.LayoutParams.MATCH_PARENT);
+                popupWindow.setAnimationStyle(-1);  // 애니메이션 설정(-1:설정, 0:설정안함)
+                /**
+                 * showAtLocation(parent, gravity, x, y)
+                 * @parent : PopupWindow가 생성될 parent View 지정
+                 * View v = (View) findViewById(R.id.btn_click)의 형태로 parent 생성
+                 * @gravity : parent View의 Gravity 속성 지정 Popupwindow 위치에 영향을 줌.
+                 * @x : PopupWindow를 (-x, +x) 만큼 좌,우 이동된 위치에 생성
+                 * @y : PopupWindow를 (-y, +y) 만큼 상,하 이동된 위치에 생성
+                 */
+                popupWindow.showAtLocation(viewPopup, Gravity.CENTER, 0, 0);
+                popupWindow.setFocusable(true);
+                popupWindow.update();
+                break;
             case R.id.button_male:
                 if (buttonMale.getBackground() == buttonFemale.getBackground()) {
                     buttonMale.setBackgroundResource(R.drawable.button_border_after);
@@ -144,7 +171,6 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
 
     @Override
     public void onBackPressed() {
-        this.finish();
-        overridePendingTransition(R.anim.animation_enter_left2right, R.anim.animation_leave_left2right);
+
     }
 }
