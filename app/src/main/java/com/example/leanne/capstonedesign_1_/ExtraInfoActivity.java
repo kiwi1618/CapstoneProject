@@ -5,15 +5,18 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +26,6 @@ import java.util.Calendar;
  * Created by imsuyeon on 16. 4. 4..
  */
 public class ExtraInfoActivity extends Activity implements View.OnClickListener {
-    private EditText editTextCompany, editTextToeic;
     static boolean isFemaleClicked;
     static boolean isMaleClicked;
     private Button buttonMale;
@@ -34,12 +36,16 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
     private int day;
 
     private TextView textViewBirthday;
-    private Button buttonBirthday;
-
     static final int DATE_DIALOG_ID = 0;
 
     private TextView textViewUniSearch;
     private PopupWindow popupWindow;
+
+    private Spinner spinnerMajor;
+    private Spinner spinnerCompType;
+    private Spinner spinnerCompDuty;
+
+    private EditText editTextToeic;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,28 +56,46 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
     private void initView() {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        editTextCompany = (EditText) findViewById(R.id.wishcomp_extra_input);
-        editTextToeic = (EditText) findViewById(R.id.editText_toeic);
         buttonMale = (Button) findViewById(R.id.button_male);
         buttonFemale = (Button) findViewById(R.id.button_female);
         isMaleClicked = false;
         isFemaleClicked = false;
-
-        // buttonBirthday.setOnClickListener(this);
 
         final Calendar c = Calendar.getInstance();
         year = c.get(Calendar.YEAR);
         month = c.get(Calendar.MONTH);
         day = c.get(Calendar.DAY_OF_MONTH);
 
+        textViewBirthday = (TextView) findViewById(R.id.text_birthday);
+        textViewBirthday.setOnClickListener(this);
         textViewUniSearch = (TextView) findViewById(R.id.uni_extra_input);
         textViewUniSearch.setOnClickListener(this);
+        editTextToeic = (EditText) findViewById(R.id.editText_toeic);
+
+        spinnerMajor = (Spinner) findViewById(R.id.spinner_major);
+        ArrayAdapter adapterMajor = ArrayAdapter.createFromResource(this, R.array.majors,
+                android.R.layout.simple_spinner_item);
+        adapterMajor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerMajor.setAdapter(adapterMajor);
+
+        spinnerCompType = (Spinner) findViewById(R.id.spinner_company_type);
+        ArrayAdapter adapterCompType = ArrayAdapter.createFromResource(this, R.array.company_types,
+                android.R.layout.simple_spinner_item);
+        adapterCompType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCompType.setAdapter(adapterCompType);
+
+        spinnerCompDuty = (Spinner) findViewById(R.id.spinner_company_duty);
+        ArrayAdapter adapterCompDuty = ArrayAdapter.createFromResource(this, R.array.company_duties,
+                android.R.layout.simple_spinner_item);
+        adapterCompDuty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCompDuty.setAdapter(adapterCompDuty);
 
         updateDisplay();
     }
 
     private void updateDisplay() {
-        // this.textViewBirthday.setText(new StringBuilder().append(year).append(".").append(month + 1).append(".").append(day));
+        this.textViewBirthday.setText(
+                new StringBuilder().append(year).append(".").append(month + 1).append(".").append(day));
     }
 
     private DatePickerDialog.OnDateSetListener mDateSetListener =
@@ -141,6 +165,15 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
                     isMaleClicked = false;
                 }
                 break;
+            case R.id.text_birthday:
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        showDialog(DATE_DIALOG_ID);
+                    }
+                }, 100);
+                break;
             case R.id.button_skip:
                 Intent intentHome = new Intent(this, HomeActivity.class);
                 startActivity(intentHome);
@@ -149,6 +182,16 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
                 this.finish();
                 break;
             case R.id.button_save:
+                String stringScore = editTextToeic.getText().toString();
+                if (stringScore.equals(""))
+                    Toast.makeText(this, "토익점수를 입력해주세요.", Toast.LENGTH_LONG).show();
+                else {
+                    int toeicScore = Integer.parseInt(stringScore);
+                    if (toeicScore < 0 && toeicScore > 990) {
+                        Toast.makeText(this, "올바른 토익점수를 입력해주세요.", Toast.LENGTH_LONG).show();
+                        break;
+                    }
+                }
                 boolean gender = false;
                 // String birthday = textViewBirthday.getText().toString();
 

@@ -61,19 +61,16 @@
             android:textColor="@android:color/white"
             android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/major_extra_input"
+        <Spinner
+            android:id="@+id/spinner_major"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@id/uni_extra"
-            android:layout_marginBottom="10dp"
             android:background="@android:color/white"
-            android:hint="전공"
-            android:inputType="text"
+            android:drawSelectorOnTop="true"
             android:padding="10dp"
-            android:singleLine="true"
-            android:textColorHint="@color/light_gray" />
+            android:prompt="@string/choose" />
 
         <TextView
             android:id="@+id/comp_type_extra"
@@ -88,19 +85,16 @@
             android:textColor="@android:color/white"
             android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/comp_type_extra_input"
+        <Spinner
+            android:id="@+id/spinner_company_type"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@id/major_extra"
-            android:layout_marginBottom="10dp"
             android:background="@android:color/white"
-            android:hint="회사종류"
-            android:inputType="text"
+            android:drawSelectorOnTop="true"
             android:padding="10dp"
-            android:singleLine="true"
-            android:textColorHint="@color/light_gray" />
+            android:prompt="@string/choose" />
 
         <TextView
             android:id="@+id/wishduty_extra"
@@ -115,20 +109,16 @@
             android:textColor="@android:color/white"
             android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/wishduty_extra_input"
+        <Spinner
+            android:id="@+id/spinner_company_duty"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@id/comp_type_extra"
-            android:layout_marginBottom="10dp"
             android:background="@android:color/white"
-            android:clickable="true"
-            android:hint="희망직무"
-            android:inputType="text"
+            android:drawSelectorOnTop="true"
             android:padding="10dp"
-            android:singleLine="true"
-            android:textColorHint="@color/light_gray" />
+            android:prompt="@string/choose" />
 
         <TextView
             android:id="@+id/wishcomp_extra"
@@ -153,7 +143,6 @@
             android:background="@android:color/white"
             android:clickable="true"
             android:hint="희망회사"
-            android:inputType="textPassword"
             android:padding="10dp"
             android:singleLine="true"
             android:textColorHint="@color/light_gray" />
@@ -212,12 +201,12 @@
             android:layout_marginBottom="20dp"
             android:layout_marginTop="10dp"
             android:layout_toLeftOf="@+id/age_extra_input"
-            android:text="나이"
+            android:text="생년월일"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/age_extra_input"
+        <TextView
+            android:id="@+id/text_birthday"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -225,10 +214,9 @@
             android:layout_marginBottom="10dp"
             android:background="@android:color/white"
             android:clickable="true"
-            android:hint="나이"
             android:padding="10dp"
             android:singleLine="true"
-            android:textColorHint="@color/light_gray" />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/text_toeic"
@@ -253,6 +241,8 @@
             android:background="@android:color/white"
             android:clickable="true"
             android:hint="토익점수"
+            android:inputType="number"
+            android:maxLength="3"
             android:padding="10dp"
             android:singleLine="true"
             android:textColorHint="@color/light_gray" />
