@@ -20,8 +20,8 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                //TabFragment_MyPage tab1 = new TabFragment_Home();
-               // return tab1;
+                TabFragment_Home tab1 = new TabFragment_Home();
+                return tab1;
             case 1:
                 TabFragment_Ranking tab2 = new TabFragment_Ranking();
                 return tab2;
