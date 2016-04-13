@@ -183,12 +183,15 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
                 break;
             case R.id.button_save:
                 String stringScore = editTextToeic.getText().toString();
-                int toeicScore = Integer.parseInt(stringScore);
-                if (toeicScore < 0 && toeicScore > 990) {
-                    Toast.makeText(this, "올바른 토익점수를 입력해주세요.", Toast.LENGTH_LONG).show();
-                    break;
+                if (stringScore.equals("")) {
+                    Toast.makeText(this, "토익점수를 입력해주세요.", Toast.LENGTH_LONG).show();
+                } else {
+                    int toeicScore = Integer.parseInt(stringScore);
+                    if (toeicScore < 0 && toeicScore > 990) {
+                        Toast.makeText(this, "올바른 토익점수를 입력해주세요.", Toast.LENGTH_LONG).show();
+                        break;
+                    }
                 }
-
                 boolean gender = false;
                 // String birthday = textViewBirthday.getText().toString();
 
