@@ -20,30 +20,28 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.Calendar;
 
 /**
  * Created by imsuyeon on 16. 4. 4..
  */
 public class ExtraInfoActivity extends Activity implements View.OnClickListener {
-    static boolean isFemaleClicked;
-    static boolean isMaleClicked;
-    private Button buttonMale;
-    private Button buttonFemale;
+    static boolean isFemaleClicked, isMaleClicked;
+    private Button buttonMale, buttonFemale;
 
-    private int year;
-    private int month;
-    private int day;
+    private int year, month, day;
 
     private TextView textViewBirthday;
     static final int DATE_DIALOG_ID = 0;
 
     private TextView textViewUniSearch;
-    private PopupWindow popupWindow;
+    private PopupWindow popupWindowUni;
+    private TextView textViewAddCertif;
+    private PopupWindow popupWindowCertif;
 
-    private Spinner spinnerMajor;
-    private Spinner spinnerCompType;
-    private Spinner spinnerCompDuty;
+    private Spinner spinnerMajor, spinnerCompType, spinnerCompDuty;
 
     private EditText editTextToeic;
 
@@ -70,6 +68,8 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
         textViewBirthday.setOnClickListener(this);
         textViewUniSearch = (TextView) findViewById(R.id.uni_extra_input);
         textViewUniSearch.setOnClickListener(this);
+        textViewAddCertif = (TextView) findViewById(R.id.certif_input);
+        textViewAddCertif.setOnClickListener(this);
         editTextToeic = (EditText) findViewById(R.id.editText_toeic);
 
         spinnerMajor = (Spinner) findViewById(R.id.spinner_major);
@@ -121,10 +121,10 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.uni_extra_input:
-                View viewPopup = getLayoutInflater().inflate(R.layout.activity_popup_university, null);
-                popupWindow = new PopupWindow(viewPopup, RelativeLayout.LayoutParams.MATCH_PARENT,
+                View viewPopupUni = getLayoutInflater().inflate(R.layout.activity_popup_university, null);
+                popupWindowUni = new PopupWindow(viewPopupUni, RelativeLayout.LayoutParams.MATCH_PARENT,
                         RelativeLayout.LayoutParams.MATCH_PARENT);
-                popupWindow.setAnimationStyle(-1);  // 애니메이션 설정(-1:설정, 0:설정안함)
+                popupWindowUni.setAnimationStyle(-1);  // 애니메이션 설정(-1:설정, 0:설정안함)
                 /**
                  * showAtLocation(parent, gravity, x, y)
                  * @parent : PopupWindow가 생성될 parent View 지정
@@ -133,9 +133,9 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
                  * @x : PopupWindow를 (-x, +x) 만큼 좌,우 이동된 위치에 생성
                  * @y : PopupWindow를 (-y, +y) 만큼 상,하 이동된 위치에 생성
                  */
-                popupWindow.showAtLocation(viewPopup, Gravity.CENTER, 0, 0);
-                popupWindow.setFocusable(true);
-                popupWindow.update();
+                popupWindowUni.showAtLocation(viewPopupUni, Gravity.CENTER, 0, 0);
+                popupWindowUni.setFocusable(true);
+                popupWindowUni.update();
                 break;
             case R.id.button_male:
                 if (buttonMale.getBackground() == buttonFemale.getBackground()) {
@@ -174,6 +174,15 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
                     }
                 }, 100);
                 break;
+            case R.id.certif_input:
+                View viewPopupCertif = getLayoutInflater().inflate(R.layout.activity_popup_certificate, null);
+                popupWindowCertif = new PopupWindow(viewPopupCertif, RelativeLayout.LayoutParams.MATCH_PARENT,
+                        RelativeLayout.LayoutParams.MATCH_PARENT);
+                popupWindowCertif.setAnimationStyle(-1);
+                popupWindowCertif.showAtLocation(viewPopupCertif, Gravity.CENTER, 0, 0);
+                popupWindowCertif.setFocusable(true);
+                popupWindowCertif.update();
+                break;
             case R.id.button_skip:
                 Intent intentHome = new Intent(this, HomeActivity.class);
                 startActivity(intentHome);
@@ -188,7 +197,7 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
                     break;
                 } else {
                     int toeicScore = Integer.parseInt(stringScore);
-                    if (toeicScore < 0 && toeicScore > 990) {
+                    if (toeicScore < 0 || toeicScore > 990) {
                         Toast.makeText(this, "올바른 토익점수를 입력해주세요.", Toast.LENGTH_LONG).show();
                         break;
                     }
