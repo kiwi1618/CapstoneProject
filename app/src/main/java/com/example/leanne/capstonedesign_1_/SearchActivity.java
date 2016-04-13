@@ -23,18 +23,18 @@ public class SearchActivity extends Activity implements View.OnClickListener {
     }
 
     private void initView() {
-        search = (Button)findViewById(R.id.button_search);
+        //search = (Button)findViewById(R.id.button_search);
         search.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.button_search:
-                Intent goSearchResult = new Intent(this, SearchResultActivity.class);
+            //case R.id.button_search:
+               /* Intent goSearchResult = new Intent(this, SearchResultActivity.class);
                 startActivity(goSearchResult);
                 this.overridePendingTransition(R.anim.animation_enter_left2right, R.anim.animation_leave_left2right);
-                break;
+                break;*/
         }
     }
 
