@@ -29,6 +29,8 @@
         <activity android:name=".EditMyInfoActivity" />
         <activity android:name=".EditRankingsActivity" />
         <activity android:name=".SettingsActivity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".SearchResultActivity" />
     </application>
 
 </manifest>

@@ -12,7 +12,8 @@ import android.widget.Toast;
  */
 public class EditMyInfoActivity extends Activity implements View.OnClickListener {
 
-    private Button saveEditMyInfo;
+    private Button saveEditMyInfo, buttonMale, buttonFemale;
+    static boolean isFemaleClicked, isMaleClicked;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,11 +26,43 @@ public class EditMyInfoActivity extends Activity implements View.OnClickListener
     public void initView() {
         saveEditMyInfo = (Button)findViewById(R.id.button_my_info_save);
         saveEditMyInfo.setOnClickListener(this);
+        buttonMale = (Button)findViewById(R.id.button_male);
+        buttonMale.setOnClickListener(this);
+        buttonFemale = (Button)findViewById(R.id.button_female);
+        buttonFemale.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
+            case R.id.button_male:
+                if (buttonMale.getBackground() == buttonFemale.getBackground()) {
+                    buttonMale.setBackgroundResource(R.drawable.button_border_after);
+                    buttonMale.setTextColor(getResources().getColor(R.color.mint));
+                    isMaleClicked = true;
+                } else if (buttonMale.getBackground() != buttonFemale.getBackground()) {
+                    buttonMale.setBackgroundResource(R.drawable.button_border_after);
+                    buttonMale.setTextColor(getResources().getColor(R.color.mint));
+                    isMaleClicked = true;
+                    buttonFemale.setBackgroundResource(R.drawable.button_boarder_before);
+                    buttonFemale.setTextColor(getResources().getColor(R.color.light_gray));
+                    isFemaleClicked = false;
+                }
+                break;
+            case R.id.button_female:
+                if (buttonMale.getBackground() == buttonFemale.getBackground()) {
+                    buttonFemale.setBackgroundResource(R.drawable.button_border_after);
+                    buttonFemale.setTextColor(getResources().getColor(R.color.mint));
+                    isFemaleClicked = true;
+                } else if (buttonMale.getBackground() != buttonFemale.getBackground()) {
+                    buttonFemale.setBackgroundResource(R.drawable.button_border_after);
+                    buttonFemale.setTextColor(getResources().getColor(R.color.mint));
+                    isFemaleClicked = true;
+                    buttonMale.setBackgroundResource(R.drawable.button_boarder_before);
+                    buttonMale.setTextColor(getResources().getColor(R.color.light_gray));
+                    isMaleClicked = false;
+                }
+                break;
             case R.id.button_my_info_save:
                 // save info on DB
                 // if DB save success
