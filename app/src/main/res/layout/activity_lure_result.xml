@@ -31,6 +31,15 @@
             android:textColor="@android:color/white"
             android:paddingBottom="20dp"/>
 
+        <TextView
+            android:id="@+id/result_text_toeic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="57dp"
+            android:textColor="@android:color/white"
+            android:paddingBottom="20dp"
+            android:text=""/>
+
         <Button android:id="@+id/go_next_button"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
