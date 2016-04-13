@@ -11,10 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class TabFragment_MyPage extends Fragment implements View.OnClickListener {
 
-    private Button editMyInfo, editRankingSettings,settings;
+    private Button editMyInfo, editRankingSettings;
+    private ImageButton settings;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -26,7 +28,7 @@ public class TabFragment_MyPage extends Fragment implements View.OnClickListener
     private void initView(View v) {
         editMyInfo = (Button)v.findViewById(R.id.button_edit_myinfo);
         editRankingSettings = (Button)v.findViewById(R.id.button_edit_rankings);
-        settings = (Button)v.findViewById(R.id.button_settings);
+        settings = (ImageButton)v.findViewById(R.id.button_settings);
         editMyInfo.setOnClickListener(this);
         editRankingSettings.setOnClickListener(this);
         settings.setOnClickListener(this);

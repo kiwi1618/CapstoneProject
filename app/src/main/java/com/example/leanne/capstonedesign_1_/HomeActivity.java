@@ -19,9 +19,10 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("내 페이지"));
+        tabLayout.addTab(tabLayout.newTab().setText("홈"));
         tabLayout.addTab(tabLayout.newTab().setText("맞춤형 랭킹"));
         tabLayout.addTab(tabLayout.newTab().setText("♥찜목록"));
+        tabLayout.addTab(tabLayout.newTab().setText("내 페이지"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
@@ -45,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
-        viewPager.setCurrentItem(1);    // show second tab as default
+        viewPager.setCurrentItem(0);    // show first tab as default
     }
 
     /*@Override
