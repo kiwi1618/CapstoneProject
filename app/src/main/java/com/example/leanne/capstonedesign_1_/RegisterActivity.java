@@ -13,8 +13,8 @@ import android.widget.Toast;
  * Created by imsuyeon on 16. 4. 4..
  */
 public class RegisterActivity extends Activity implements View.OnClickListener {
-    EditText editTextId, editTextPassword, editTextConfirmPassword, editTextName;
-    Button buttonRegister;
+    private EditText editTextId, editTextPassword, editTextConfirmPassword, editTextName;
+    private Button buttonRegister, buttonCheckID;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +33,16 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
         buttonRegister = (Button) findViewById(R.id.button_register);
         buttonRegister.setOnClickListener(this);
+        buttonCheckID = (Button) findViewById(R.id.button_check_id);
+        buttonCheckID.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.button_check_id:
+                // 중복확인 버튼을 누른 경우 해야 할 것
+                break;
             case R.id.button_register:
                 String inputID = editTextId.getText().toString();
                 String inputPW = editTextPassword.getText().toString();
