@@ -32,7 +32,6 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
     private Button buttonMale, buttonFemale;
 
     private int year, month, day;
-
     private TextView textViewBirthday;
     static final int DATE_DIALOG_ID = 0;
 
