@@ -1,5 +1,6 @@
 package com.example.leanne.capstonedesign_1_;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -37,7 +39,7 @@ public class TabFragment_Home extends ListFragment {
         mItems.add(new ListViewItem("id_4", "컴퓨터공학부", "하드웨어/소프트웨어", "자격증..?", "900"));
         mItems.add(new ListViewItem("id_5", "컴퓨터공학부", "데이터베이스DBA", "자격증..?", "900"));
 
-        // initialize and set the list adapter
+       // initialize and set the list adapter
         setListAdapter(new ListViewDemoAdaptor(getActivity(), mItems));
     }
 
