@@ -12,11 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class TabFragment_MyPage extends Fragment implements View.OnClickListener {
 
     private Button editMyInfo, editRankingSettings;
+    private TextView textName, textId, textMajor, textWishCompType, textWishComp;
     private ImageButton settings;
+    private String sName, sId, sMajor, sWishCompType, sWishComp;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +35,29 @@ public class TabFragment_MyPage extends Fragment implements View.OnClickListener
         editMyInfo.setOnClickListener(this);
         editRankingSettings.setOnClickListener(this);
         settings.setOnClickListener(this);
+
+        textName = (TextView)v.findViewById(R.id.mypage_name);
+        textId = (TextView)v.findViewById(R.id.mypage_id);
+        textMajor = (TextView)v.findViewById(R.id.mypage_major);
+        textWishCompType = (TextView)v.findViewById(R.id.mypage_wish_company_type);
+        textWishComp = (TextView)v.findViewById(R.id.mypage_wish_company);
+
+        showInfo();
+    }
+
+    private void showInfo() {
+        // 서버에서 받은 값들로 TextView에서 보여주기
+       sName = "null";
+        sId = "null";
+        sMajor = "null";
+        sWishCompType = "null";
+        sWishComp = "null";
+
+        textName.setText(sName);
+        textId.setText(sId);
+        textMajor.setText(sMajor);
+        textWishCompType.setText(sWishCompType);
+        textWishComp.setText(sWishComp);
     }
 
     @Override
