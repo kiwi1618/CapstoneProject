@@ -42,7 +42,7 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
 
     private Spinner spinnerMajor, spinnerCompType, spinnerCompDuty;
 
-    private EditText editTextToeic;
+    private EditText editTextToeic, editTextCompName;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +70,7 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
         textViewAddCertif = (TextView) findViewById(R.id.certif_input);
         textViewAddCertif.setOnClickListener(this);
         editTextToeic = (EditText) findViewById(R.id.editText_toeic);
+        editTextCompName = (EditText) findViewById(R.id.wishcomp_extra_input);
 
         spinnerMajor = (Spinner) findViewById(R.id.spinner_major);
         ArrayAdapter adapterMajor = ArrayAdapter.createFromResource(this, R.array.majors,
