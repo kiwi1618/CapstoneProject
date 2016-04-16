@@ -200,7 +200,7 @@
             android:layout_below="@id/sex_extra"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="10dp"
-            android:layout_toLeftOf="@+id/age_extra_input"
+            android:layout_toLeftOf="@+id/text_birthday"
             android:text="생년월일"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
