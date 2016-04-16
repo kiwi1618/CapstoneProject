@@ -28,7 +28,7 @@
             android:layout_below="@id/title_register_extra"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="10dp"
-            android:layout_toLeftOf="@+id/major_extra_input"
+            android:layout_toLeftOf="@+id/uni_extra_input"
             android:text="대학"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
@@ -56,7 +56,7 @@
             android:layout_below="@id/uni_extra"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="10dp"
-            android:layout_toLeftOf="@+id/major_extra_input"
+            android:layout_toLeftOf="@+id/spinner_major"
             android:text="전공"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
@@ -80,7 +80,7 @@
             android:layout_below="@id/major_extra"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="10dp"
-            android:layout_toLeftOf="@+id/comp_type_extra_input"
+            android:layout_toLeftOf="@+id/spinner_company_type"
             android:text="회사종류"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
@@ -104,7 +104,7 @@
             android:layout_below="@id/comp_type_extra"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="10dp"
-            android:layout_toLeftOf="@+id/wishduty_extra_input"
+            android:layout_toLeftOf="@+id/spinner_company_duty"
             android:text="희망직무"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
@@ -226,7 +226,7 @@
             android:layout_below="@id/age_extra"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="10dp"
-            android:layout_toLeftOf="@+id/age_extra_input"
+            android:layout_toLeftOf="@+id/editText_toeic"
             android:text="토익점수"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
