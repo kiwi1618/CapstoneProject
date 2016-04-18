@@ -3,11 +3,14 @@ package com.example.leanne.capstonedesign_1_;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -23,7 +26,7 @@ import java.util.Calendar;
  * Created by Chloe on 4/13/2016.
  */
 public class EditRankingsActivity extends Activity implements View.OnClickListener {
-    private Button editRankingsSave, buttonMale, buttonFemale;
+    private Button editRankingsSave, buttonMale, buttonFemale, buttonCloseUniPopup;
     static boolean isFemaleClicked, isMaleClicked;
 
     private int year, month, day;
@@ -111,13 +114,23 @@ public class EditRankingsActivity extends Activity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.uni_extra_input:
-                View viewPopupUni = getLayoutInflater().inflate(R.layout.activity_popup_university, null);
-                popupWindowUni = new PopupWindow(viewPopupUni, RelativeLayout.LayoutParams.MATCH_PARENT,
+                LayoutInflater inflaterUni = (LayoutInflater) EditRankingsActivity.this
+                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View layoutUni = inflaterUni.inflate(R.layout.activity_popup_university,
+                        (ViewGroup) findViewById(R.id.popup_element));
+                popupWindowUni = new PopupWindow(layoutUni, RelativeLayout.LayoutParams.MATCH_PARENT,
                         RelativeLayout.LayoutParams.MATCH_PARENT);
-                popupWindowUni.setAnimationStyle(-1);
-                popupWindowUni.showAtLocation(viewPopupUni, Gravity.CENTER, 0, 0);
+                popupWindowUni.showAtLocation(layoutUni, Gravity.CENTER, 0, 0);
                 popupWindowUni.setFocusable(true);
                 popupWindowUni.update();
+
+                buttonCloseUniPopup = (Button) layoutUni.findViewById(R.id.button_cancel_uni);
+                buttonCloseUniPopup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindowUni.dismiss();
+                    }
+                });
                 break;
             case R.id.button_male:
                 if (buttonMale.getBackground() == buttonFemale.getBackground()) {
