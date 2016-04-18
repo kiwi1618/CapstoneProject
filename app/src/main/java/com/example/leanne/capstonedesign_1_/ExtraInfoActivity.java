@@ -3,11 +3,14 @@ package com.example.leanne.capstonedesign_1_;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -29,7 +32,7 @@ import java.util.Calendar;
  */
 public class ExtraInfoActivity extends Activity implements View.OnClickListener {
     static boolean isFemaleClicked, isMaleClicked;
-    private Button buttonMale, buttonFemale;
+    private Button buttonMale, buttonFemale, buttonCloseUniPopup, buttonCloseCertPopup;
 
     private int year, month, day;
     private TextView textViewBirthday;
@@ -121,21 +124,23 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.uni_extra_input:
-                View viewPopupUni = getLayoutInflater().inflate(R.layout.activity_popup_university, null);
-                popupWindowUni = new PopupWindow(viewPopupUni, RelativeLayout.LayoutParams.MATCH_PARENT,
+                LayoutInflater inflaterUni = (LayoutInflater) ExtraInfoActivity.this
+                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View layoutUni = inflaterUni.inflate(R.layout.activity_popup_university,
+                        (ViewGroup) findViewById(R.id.popup_element));
+                popupWindowUni = new PopupWindow(layoutUni, RelativeLayout.LayoutParams.MATCH_PARENT,
                         RelativeLayout.LayoutParams.MATCH_PARENT);
-                popupWindowUni.setAnimationStyle(-1);  // 애니메이션 설정(-1:설정, 0:설정안함)
-                /**
-                 * showAtLocation(parent, gravity, x, y)
-                 * @parent : PopupWindow가 생성될 parent View 지정
-                 * View v = (View) findViewById(R.id.btn_click)의 형태로 parent 생성
-                 * @gravity : parent View의 Gravity 속성 지정 Popupwindow 위치에 영향을 줌.
-                 * @x : PopupWindow를 (-x, +x) 만큼 좌,우 이동된 위치에 생성
-                 * @y : PopupWindow를 (-y, +y) 만큼 상,하 이동된 위치에 생성
-                 */
-                popupWindowUni.showAtLocation(viewPopupUni, Gravity.CENTER, 0, 0);
+                popupWindowUni.showAtLocation(layoutUni, Gravity.CENTER, 0, 0);
                 popupWindowUni.setFocusable(true);
                 popupWindowUni.update();
+
+                buttonCloseUniPopup = (Button) layoutUni.findViewById(R.id.button_cancel_uni);
+                buttonCloseUniPopup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindowUni.dismiss();
+                    }
+                });
                 break;
             case R.id.button_male:
                 if (buttonMale.getBackground() == buttonFemale.getBackground()) {
@@ -175,15 +180,28 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
                 }, 100);
                 break;
             case R.id.certif_input:
-                View viewPopupCertif = getLayoutInflater().inflate(R.layout.activity_popup_certificate, null);
-                popupWindowCertif = new PopupWindow(viewPopupCertif, RelativeLayout.LayoutParams.MATCH_PARENT,
+                LayoutInflater inflaterCert = (LayoutInflater) ExtraInfoActivity.this
+                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View layoutCert = inflaterCert.inflate(R.layout.activity_popup_certificate,
+                        (ViewGroup) findViewById(R.id.popup_element));
+                popupWindowCertif = new PopupWindow(layoutCert, RelativeLayout.LayoutParams.MATCH_PARENT,
                         RelativeLayout.LayoutParams.MATCH_PARENT);
-                popupWindowCertif.setAnimationStyle(-1);
-                popupWindowCertif.showAtLocation(viewPopupCertif, Gravity.CENTER, 0, 0);
+                popupWindowCertif.showAtLocation(layoutCert, Gravity.CENTER, 0, 0);
                 popupWindowCertif.setFocusable(true);
                 popupWindowCertif.update();
+
+                buttonCloseCertPopup = (Button) layoutCert.findViewById(R.id.button_cancel_cert);
+                buttonCloseCertPopup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindowCertif.dismiss();
+                    }
+                });
                 break;
             case R.id.button_skip:
+
+                // 디비에 null로 저장
+
                 Intent intentHome = new Intent(this, HomeActivity.class);
                 startActivity(intentHome);
                 this.overridePendingTransition(R.anim.animation_enter_right2left,
