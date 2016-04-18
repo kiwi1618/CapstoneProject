@@ -3,11 +3,14 @@ package com.example.leanne.capstonedesign_1_;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -24,7 +27,7 @@ import java.util.Calendar;
  * Created by Chloe on 4/12/2016.
  */
 public class EditMyInfoActivity extends Activity implements View.OnClickListener {
-    private Button saveEditMyInfo, buttonMale, buttonFemale;
+    private Button saveEditMyInfo, buttonMale, buttonFemale, buttonCloseUniPopup, buttonCloseCertPopup;
     static boolean isFemaleClicked, isMaleClicked;
 
     private int year, month, day;
@@ -119,13 +122,23 @@ public class EditMyInfoActivity extends Activity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.uni_extra_input:
-                View viewPopupUni = getLayoutInflater().inflate(R.layout.activity_popup_university, null);
-                popupWindowUni = new PopupWindow(viewPopupUni, RelativeLayout.LayoutParams.MATCH_PARENT,
+                LayoutInflater inflaterUni = (LayoutInflater) EditMyInfoActivity.this
+                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View layoutUni = inflaterUni.inflate(R.layout.activity_popup_university,
+                        (ViewGroup) findViewById(R.id.popup_element));
+                popupWindowUni = new PopupWindow(layoutUni, RelativeLayout.LayoutParams.MATCH_PARENT,
                         RelativeLayout.LayoutParams.MATCH_PARENT);
-                popupWindowUni.setAnimationStyle(-1);
-                popupWindowUni.showAtLocation(viewPopupUni, Gravity.CENTER, 0, 0);
+                popupWindowUni.showAtLocation(layoutUni, Gravity.CENTER, 0, 0);
                 popupWindowUni.setFocusable(true);
                 popupWindowUni.update();
+
+                buttonCloseUniPopup = (Button) layoutUni.findViewById(R.id.button_cancel_uni);
+                buttonCloseUniPopup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindowUni.dismiss();
+                    }
+                });
                 break;
             case R.id.button_male:
                 if (buttonMale.getBackground() == buttonFemale.getBackground()) {
@@ -165,13 +178,23 @@ public class EditMyInfoActivity extends Activity implements View.OnClickListener
                 }, 100);
                 break;
             case R.id.certif_input:
-                View viewPopupCertif = getLayoutInflater().inflate(R.layout.activity_popup_certificate, null);
-                popupWindowCertif = new PopupWindow(viewPopupCertif, RelativeLayout.LayoutParams.MATCH_PARENT,
+                LayoutInflater inflaterCert = (LayoutInflater) EditMyInfoActivity.this
+                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View layoutCert = inflaterCert.inflate(R.layout.activity_popup_certificate,
+                        (ViewGroup) findViewById(R.id.popup_element));
+                popupWindowCertif = new PopupWindow(layoutCert, RelativeLayout.LayoutParams.MATCH_PARENT,
                         RelativeLayout.LayoutParams.MATCH_PARENT);
-                popupWindowCertif.setAnimationStyle(-1);
-                popupWindowCertif.showAtLocation(viewPopupCertif, Gravity.CENTER, 0, 0);
+                popupWindowCertif.showAtLocation(layoutCert, Gravity.CENTER, 0, 0);
                 popupWindowCertif.setFocusable(true);
                 popupWindowCertif.update();
+
+                buttonCloseCertPopup = (Button) layoutCert.findViewById(R.id.button_cancel_cert);
+                buttonCloseCertPopup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindowCertif.dismiss();
+                    }
+                });
                 break;
             case R.id.button_my_info_save:
                 // save info on DB
