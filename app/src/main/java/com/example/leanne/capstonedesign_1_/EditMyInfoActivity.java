@@ -27,6 +27,7 @@ import java.util.Calendar;
  * Created by Chloe on 4/12/2016.
  */
 public class EditMyInfoActivity extends Activity implements View.OnClickListener {
+    private TextView textViewName, textViewID;
     private Button saveEditMyInfo, buttonMale, buttonFemale, buttonCloseUniPopup, buttonCloseCertPopup;
     static boolean isFemaleClicked, isMaleClicked;
 
@@ -54,6 +55,9 @@ public class EditMyInfoActivity extends Activity implements View.OnClickListener
     public void initView() {
         saveEditMyInfo = (Button) findViewById(R.id.button_my_info_save);
         saveEditMyInfo.setOnClickListener(this);
+
+        textViewName = (TextView) findViewById(R.id.text_user_name);
+        textViewID = (TextView) findViewById(R.id.text_user_id);
 
         buttonMale = (Button) findViewById(R.id.button_male);
         buttonFemale = (Button) findViewById(R.id.button_female);
@@ -90,6 +94,9 @@ public class EditMyInfoActivity extends Activity implements View.OnClickListener
                 android.R.layout.simple_spinner_item);
         adapterCompDuty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCompDuty.setAdapter(adapterCompDuty);
+
+        textViewName.setText(LoggedInUser.getLoggedinUser().getUserName());
+        textViewID.setText(LoggedInUser.getLoggedinUser().getId());
 
         updateDisplay();
     }

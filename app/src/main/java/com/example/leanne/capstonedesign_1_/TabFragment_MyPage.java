@@ -47,11 +47,20 @@ public class TabFragment_MyPage extends Fragment implements View.OnClickListener
 
     private void showInfo() {
         // 서버에서 받은 값들로 TextView에서 보여주기
-       sName = "null";
-        sId = "null";
-        sMajor = "null";
-        sWishCompType = "null";
-        sWishComp = "null";
+        sName = null;
+        sId=null;
+        sMajor=null;
+        sWishCompType=null;
+        sWishComp=null;
+        sName = LoggedInUser.getLoggedinUser().getUserName();
+        sId = LoggedInUser.getLoggedinUser().getId();
+        if(LoggedInUser.getLoggedinUser().getMajor().equals("")) sMajor = " ";
+        else sMajor = LoggedInUser.getLoggedinUser().getMajor();
+        if(LoggedInUser.getLoggedinUser().getCom_type().equals("")) sWishCompType = " ";
+        else sWishCompType = LoggedInUser.getLoggedinUser().getCom_type();
+        if(LoggedInUser.getLoggedinUser().getCom_name().equals("")) sWishComp = " ";
+        else sWishComp = LoggedInUser.getLoggedinUser().getCom_name();
+
 
         textName.setText(sName);
         textId.setText(sId);
