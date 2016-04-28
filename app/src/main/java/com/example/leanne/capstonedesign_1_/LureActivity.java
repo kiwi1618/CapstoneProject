@@ -63,11 +63,14 @@ public class LureActivity extends Activity implements View.OnClickListener {
                     boolean scoreValidate = false;
                     if (toeicScore >= 0 && toeicScore <= 990) {
                         scoreValidate = true;
-                        Intent showResult = new Intent(LureActivity.this, LureResultActivity.class);
-                        startActivity(showResult);
-                        overridePendingTransition(
-                                R.anim.animation_enter_right2left,
-                                R.anim.animation_leave_right2left);
+                        new RequestMsgSender().execute("1;"+toeicScore+";");
+                        if(DataHolder.getTaskIsDone()==true) {
+                                Intent showResult = new Intent(LureActivity.this, LureResultActivity.class);
+                                startActivity(showResult);
+                                overridePendingTransition(
+                                        R.anim.animation_enter_right2left,
+                                        R.anim.animation_leave_right2left);
+                        }
                          /* Do something with toeicScore.
                          Show as graphic or sth..
                          And give to next activity. */
