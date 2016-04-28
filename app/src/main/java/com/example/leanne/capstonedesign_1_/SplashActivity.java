@@ -22,9 +22,6 @@ public class SplashActivity extends Activity {
         final Intent lure = new Intent(this, LureActivity.class);
         final Intent login = new Intent(this, LoginActivity.class);
 
-        Thread socketConnectingThread = new Thread(SocketConnector.getConnectedSocket());
-        socketConnectingThread.start();
-
         hd.postDelayed(new Runnable() {
             @Override
             public void run() {
