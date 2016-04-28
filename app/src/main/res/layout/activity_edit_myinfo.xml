@@ -57,7 +57,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="10dp"
-                android:text=""
+                android:text="임수연"
                 android:textColor="@android:color/white"
                 android:textSize="20dp" />
 
@@ -82,7 +82,7 @@
                 android:layout_below="@id/name_extra"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="10dp"
-                android:text=""
+                android:text="limlean590"
                 android:textColor="@android:color/white"
                 android:textSize="20dp" />
 

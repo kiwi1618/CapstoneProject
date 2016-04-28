@@ -9,15 +9,12 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.telecom.Call;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Chloe on 4/5/2016.
@@ -66,23 +63,14 @@ public class LureActivity extends Activity implements View.OnClickListener {
                     boolean scoreValidate = false;
                     if (toeicScore >= 0 && toeicScore <= 990) {
                         scoreValidate = true;
-                        RequestMsgSender toeicMsgSender = (RequestMsgSender) new RequestMsgSender().execute("1;"+toeicScore+";");
-                        String result = null;
-
-                        try {
-                            result = toeicMsgSender.get();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        } catch (ExecutionException e) {
-                            e.printStackTrace();
-                        }
-
+                        new RequestMsgSender().execute("1;"+toeicScore+";");
+                        if(DataHolder.getTaskIsDone()==true) {
                                 Intent showResult = new Intent(LureActivity.this, LureResultActivity.class);
                                 startActivity(showResult);
                                 overridePendingTransition(
                                         R.anim.animation_enter_right2left,
                                         R.anim.animation_leave_right2left);
-
+                        }
                          /* Do something with toeicScore.
                          Show as graphic or sth..
                          And give to next activity. */

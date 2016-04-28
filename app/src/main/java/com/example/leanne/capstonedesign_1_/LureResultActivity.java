@@ -34,9 +34,8 @@ public class LureResultActivity extends Activity implements View.OnClickListener
 
     private void getToeicScore() {
         score = "null"; // default
-        score = SocketConnector.getConnectedSocket().getReplyMsg();
         // get score from server as String
-        scoreToeic.setText(score+" %");
+        scoreToeic.setText(score);
     }
 
     @Override

@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.example.leanne.capstonedesign_1_.ListViewDemoAdaptor;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Chloe on 4/13/2016.
@@ -33,44 +32,12 @@ public class TabFragment_Home extends ListFragment {
         mItems = new ArrayList<ListViewItem>();
         Resources resources = getResources();
 
-        RequestMsgSender userInfoMsgSender = (RequestMsgSender) new RequestMsgSender().execute("8;");
-        String rankingResult = null;
-
-        try {
-            rankingResult = userInfoMsgSender.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        int topN=0;
-        String[] tokens = rankingResult.split(";");
-        for(int i = 0 ; i < tokens.length ; i++){
-            if(tokens[i].equals("!")) tokens[i]="";
-        }
-        topN = Integer.parseInt(tokens[0]);
-        int j=0;
-        for(int i = 1 ; j < topN ; i+=11, j++ ){
-            String idInfo = new String("ID : ");
-            String majorInfo = new String("전공 : ");
-            String dutyInfo = new String("직무 : ");
-            String certifiInfo = new String("자격증 : ");
-            String toeicInfo = new String("토익 :  ");
-
-            idInfo += tokens[i];
-            majorInfo += tokens[i+3];
-            dutyInfo += tokens[i+5];
-            certifiInfo += tokens[i+9];
-            toeicInfo += tokens[i+1];
-            certifiInfo = certifiInfo.replace("|",",");
-            mItems.add(new ListViewItem(idInfo,majorInfo,dutyInfo,certifiInfo,toeicInfo));
-        }
         // 일단은 컴공 밖에 선택 못 하니까
-        //mItems.add(new ListViewItem("id_1", "컴퓨터공학부", "시스템프로그래머", "자격증..?", "900"));
-        //mItems.add(new ListViewItem("id_2", "컴퓨터공학부", "웹프로그래머", "자격증..?", "900"));
-        //mItems.add(new ListViewItem("id_3", "컴퓨터공학무", "응용프로그래머", "자격증..?", "900"));
-        //mItems.add(new ListViewItem("id_4", "컴퓨터공학부", "하드웨어/소프트웨어", "자격증..?", "900"));
-        //mItems.add(new ListViewItem("id_5", "컴퓨터공학부", "데이터베이스DBA", "자격증..?", "900"));
+        mItems.add(new ListViewItem("id_1", "컴퓨터공학부", "시스템프로그래머", "자격증..?", "900"));
+        mItems.add(new ListViewItem("id_2", "컴퓨터공학부", "웹프로그래머", "자격증..?", "900"));
+        mItems.add(new ListViewItem("id_3", "컴퓨터공학무", "응용프로그래머", "자격증..?", "900"));
+        mItems.add(new ListViewItem("id_4", "컴퓨터공학부", "하드웨어/소프트웨어", "자격증..?", "900"));
+        mItems.add(new ListViewItem("id_5", "컴퓨터공학부", "데이터베이스DBA", "자격증..?", "900"));
 
        // initialize and set the list adapter
         setListAdapter(new ListViewDemoAdaptor(getActivity(), mItems));

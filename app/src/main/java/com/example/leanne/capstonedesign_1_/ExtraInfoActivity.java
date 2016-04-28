@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +26,6 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.util.Calendar;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by imsuyeon on 16. 4. 4..
@@ -211,9 +209,12 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
                 this.finish();
                 break;
             case R.id.button_save:
-                String stringToeic = editTextToeic.getText().toString();
-                if (!stringToeic.equals("")) {
-                    int toeicScore = Integer.parseInt(stringToeic);
+                String stringScore = editTextToeic.getText().toString();
+                if (stringScore.equals("")) {
+                    Toast.makeText(this, "토익점수를 입력해주세요.", Toast.LENGTH_LONG).show();
+                    break;
+                } else {
+                    int toeicScore = Integer.parseInt(stringScore);
                     if (toeicScore < 0 || toeicScore > 990) {
                         Toast.makeText(this, "올바른 토익점수를 입력해주세요.", Toast.LENGTH_LONG).show();
                         break;
@@ -227,64 +228,8 @@ public class ExtraInfoActivity extends Activity implements View.OnClickListener 
                     gender = false;
 
                 // SAVE "추가정보" to db
-                String selectedUniv = "!";
-                String selectedMajor = "!";
-                String selectedCom_type = "!";
-                String selectedDuty = "!";
-                String enteredCom_name = "!";
-                String selectedGender = gender + "";
-                String selectedAge = "";
-                String enteredToeic = "";
-                String enteredCertifi = "!";
 
-                if (!spinnerMajor.getSelectedItem().toString().equals("-선택-")) {
-                    selectedMajor = spinnerMajor.getSelectedItem().toString();
-                    LoggedInUser.getLoggedinUser().setMajor(selectedMajor);
-                } else LoggedInUser.getLoggedinUser().setMajor(" ");
-                if (!spinnerCompType.getSelectedItem().toString().equals("-선택-")) {
-                    selectedCom_type = spinnerCompType.getSelectedItem().toString();
-                    LoggedInUser.getLoggedinUser().setCom_type(selectedCom_type);
-                } else LoggedInUser.getLoggedinUser().setCom_type(" ");
-                if (!spinnerCompDuty.getSelectedItem().toString().equals("-선택-")) {
-                    selectedDuty = spinnerCompDuty.getSelectedItem().toString();
-                    LoggedInUser.getLoggedinUser().setDuty(selectedDuty);
-                } else LoggedInUser.getLoggedinUser().setDuty(" ");
-                if (!editTextCompName.getText().toString().equals("")) {
-                    enteredCom_name = editTextCompName.getText().toString();
-                    LoggedInUser.getLoggedinUser().setCom_name(enteredCom_name);
-                } else LoggedInUser.getLoggedinUser().setCom_name(" ");
-
-                //enteredCom_name = "!";      //희망회사이름 입력부분
-
-                Calendar tempCalendar = Calendar.getInstance();
-                selectedAge = "" + String.valueOf(tempCalendar.get(Calendar.YEAR) - year + 1);
-                Log.d("TAG", "tempCalendar.get(Calendar.YEAR) = " + tempCalendar.get(Calendar.YEAR));
-                Log.d("TAG", "year = " + year);
-                Log.d("TAG", "selectedAge = " + selectedAge);
-
-                if (stringToeic.equals("")) enteredToeic = "!";
-                else enteredToeic = stringToeic;
-
-                ///////자격증 입력부분///////////
-
-                RequestMsgSender userInfoMsgSender = (RequestMsgSender) new RequestMsgSender().execute("4;" + selectedUniv + ";" + selectedMajor + ";" +
-                        selectedCom_type + ";" + selectedDuty + ";" + enteredCom_name + ";" + selectedGender + ";" + selectedAge + ";" + enteredToeic + ";" + enteredCertifi + ";");
-                String result = null;
-
-                try {
-                    result = userInfoMsgSender.get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-                Log.d("추가정보입력후", "결과: " + result);
-                if (result.equals("true"))
-                    Toast.makeText(getApplicationContext(), "추가정보 입력 완료", Toast.LENGTH_LONG).show();
-
-                else
-                    Toast.makeText(getApplicationContext(), "추가정보 입력 오류", Toast.LENGTH_LONG).show();
-
+                Toast.makeText(getApplicationContext(), "추가정보 입력 완료", Toast.LENGTH_LONG).show();
                 Intent intentHome2 = new Intent(this, HomeActivity.class);
                 startActivity(intentHome2);
                 this.overridePendingTransition(R.anim.animation_enter_right2left,

@@ -26,6 +26,14 @@ public class DataHolder {
         return holder;
     }
 
+    private static boolean taskIsDone = false;
+
+    public static boolean getTaskIsDone(){
+        return taskIsDone;
+    }
+    public static void setTaskIsDone(boolean input){
+        taskIsDone = input;
+    }
 
 
 }
